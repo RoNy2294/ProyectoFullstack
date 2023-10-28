@@ -4,31 +4,64 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                // Clonar el repositorio desde GitHub
-                git branch: 'main', credentialsId: 'tus-credenciales-github', url: 'https://github.com/tu-usuario/tu-repositorio.git'
+                git branch: 'main', credentialsId: 'tus-credenciales-github', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
             }
         }
 
         stage('Construir Frontend') {
             steps {
                 dir('view') {
-                    // Aquí puedes ejecutar comandos para construir el frontend
-                    // Por ejemplo, si utilizas npm:
                     bat 'npm install'
                     bat 'npm run build'
                 }
             }
         }
 
-        // ... Otras etapas para pruebas y despliegue ...
+        // Etapas para pruebas y despliegue ...
 
+        stage('Pruebas de Módulos') {
+            steps {
+                dir('BACKEND/modulos') {
+                    script {
+                        def modules = ['categoria.py', 'foro.py', 'noticia.py', 'orden.py', 'producto.py', 'rol.py', 'usuario.py']
+
+                        for (module in modules) {
+                            echo "Ejecutando pruebas en el módulo: $module"
+                            sh "python $module"
+                        }
+                    }
+                }
+            }
+        }
+		stage('Pruebas de Controllers') {
+            steps {
+                dir('BACKEND/controller') {
+                    script {
+                        def modules = ['asignar-rol.py', 'buscar-foro.py', 'comprar-producto.py', 'consultas.py', 'filtrar-producto.py',
+						'foro.py', 'noticias.py', 'productos.py', 'recuperar_contraseña.py', 'registrar.py', 'respuesta-foro.py']
+
+                        for (module in modules) {
+                            echo "Ejecutando pruebas en el módulo: $module"
+                            sh "python $module"
+                        }
+                    }
+                }
+            }
+        }
+		stage('Ejecutar Pruebas SQL') {
+            steps {
+                dir('https://github.com/RoNy2294/ProyectoFullstack.git') {
+                    script {
+                        sh 'psql -U rony -d base de datos -a -f tests.sql'
+                    }
+                }
+            }
+        }
         stage('Desplegar') {
             steps {
-                // Realiza el despliegue de tu proyecto
-                // Esto puede variar según tu infraestructura y preferencias
-                // Puedes utilizar scripts personalizados aquí
                 bat './deploy.bat'
             }
         }
     }
 }
+
