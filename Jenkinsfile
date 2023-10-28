@@ -55,7 +55,7 @@ pipeline {
                 // Realiza el despliegue de tu proyecto
                 // Esto puede variar según tu infraestructura y preferencias
                 // Puedes utilizar scripts personalizados aquí
-                bat './deploy.sh'
+                bat './deploy.bat'
             }
         }
     }
