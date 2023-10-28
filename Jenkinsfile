@@ -52,7 +52,7 @@ pipeline {
             steps {
                 dir('https://github.com/RoNy2294/ProyectoFullstack.git') {
                     script {
-                        sh 'psql -U rony -d base de datos -a -f tests.sql'
+                        sh 'psql -U rony -d El-Ansuelo -a -f tests.sql'
                     }
                 }
             }
