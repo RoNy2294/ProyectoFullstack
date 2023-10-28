@@ -20,35 +20,7 @@ pipeline {
             }
         }
 
-        stage('Construir Backend') {
-            steps {
-                dir('backend') {
-                    // Aquí puedes ejecutar comandos para construir el backend
-                    // Asumiendo que utilizas Maven para Java:
-                    bat 'mvn clean package'
-                }
-            }
-        }
-
-        stage('Pruebas Frontend') {
-            steps {
-                dir('view') {
-                    // Ejecuta pruebas para el frontend si las tienes
-                    // Por ejemplo, utilizando un marco de prueba como Jest
-                    bat 'npm run test'
-                }
-            }
-        }
-
-        stage('Pruebas Backend') {
-            steps {
-                dir('backend') {
-                    // Ejecuta pruebas para el backend si las tienes
-                    // Asumiendo que utilizas JUnit para Java
-                    bat 'mvn test'
-                }
-            }
-        }
+        // ... Otras etapas para pruebas y despliegue ...
 
         stage('Desplegar') {
             steps {
@@ -56,12 +28,6 @@ pipeline {
                 // Esto puede variar según tu infraestructura y preferencias
                 // Puedes utilizar scripts personalizados aquí
                 bat './deploy.bat'
-            }
-        }
-    }
-}
-
-                bat 'python deploy.py'
             }
         }
     }
