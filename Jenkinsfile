@@ -14,8 +14,8 @@ pipeline {
                 dir('view') {
                     // Aquí puedes ejecutar comandos para construir el frontend
                     // Por ejemplo, si utilizas npm:
-                    sh 'npm install'
-                    sh 'npm run build'
+                    bat 'npm install'
+                    bat 'npm run build'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
                 dir('backend') {
                     // Aquí puedes ejecutar comandos para construir el backend
                     // Asumiendo que utilizas Maven para Java:
-                    sh 'mvn clean package'
+                    bat 'mvn clean package'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
                 dir('view') {
                     // Ejecuta pruebas para el frontend si las tienes
                     // Por ejemplo, utilizando un marco de prueba como Jest
-                    sh 'npm run test'
+                    bat 'npm run test'
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
                 dir('backend') {
                     // Ejecuta pruebas para el backend si las tienes
                     // Asumiendo que utilizas JUnit para Java
-                    sh 'mvn test'
+                    bat 'mvn test'
                 }
             }
         }
@@ -55,13 +55,13 @@ pipeline {
                 // Realiza el despliegue de tu proyecto
                 // Esto puede variar según tu infraestructura y preferencias
                 // Puedes utilizar scripts personalizados aquí
-                sh './deploy.sh'
+                bat './deploy.sh'
             }
         }
     }
 }
 
-                sh 'python deploy.py'
+                bat 'python deploy.py'
             }
         }
     }
