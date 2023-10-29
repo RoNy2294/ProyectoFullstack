@@ -7,7 +7,7 @@ pipeline {
                 git branch: 'main', credentialsId: 'tus-credenciales-github', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
 	    }
         }
-    }
+    
 
         stage('Construir Frontend') {
             steps {
