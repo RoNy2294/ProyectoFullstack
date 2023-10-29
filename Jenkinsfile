@@ -19,7 +19,7 @@ pipeline {
         }
 	stage('Pruebas de Controllers') {
             steps {
-                dir('BACKEND/controller') {
+                dir('backend/controller') {
                     script {
                         def modules = ['asignar-rol.py', 'buscar-foro.py', 'comprar-producto.py', 'consultas.py', 'filtrar-producto.py',
 						'foro.py', 'noticias.py', 'productos.py', 'recuperar_contraseña.py', 'registrar.py', 'respuesta-foro.py']
