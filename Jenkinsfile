@@ -1,4 +1,3 @@
-bat 'start /B
 pipeline {
     agent any
 
