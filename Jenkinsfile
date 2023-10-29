@@ -8,16 +8,7 @@ pipeline {
             }
         }
 
-        stage('Construir Frontend') {
-            steps {
-                dir('view') {
-                    bat 'npm install'
-                    bat 'npm run build'
-                }
-            }
-        }
-
-        // Etapas para pruebas y despliegue ...
+       // Etapas para pruebas y despliegue ...
 
         stage('Pruebas de Módulos') {
             steps {
