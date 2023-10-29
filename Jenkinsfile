@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git branch: 'main', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
+                git branch: 'main', credentialsId: 'Rony/******', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
+}
             }
         }
 
