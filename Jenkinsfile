@@ -1,3 +1,4 @@
+bat 'start /B
 pipeline {
     agent any
 
@@ -10,8 +11,8 @@ pipeline {
 
         stage('Construir Frontend') {
             steps {
-                    sh 'npm install'
-                    sh 'npm run build'          
+                    bat 'npm install'
+                    bat 'npm run build'          
             }
         }
 
@@ -24,7 +25,7 @@ pipeline {
 
                     for (module in modules) {
                         echo "Ejecutando pruebas en el módulo: $module"
-                        sh "python $module"
+                        bat "python $module"
                     }
                 }
             }
@@ -37,7 +38,7 @@ pipeline {
 
                     for (module in modules) {
                         echo "Ejecutando pruebas en el módulo: $module"
-                        sh "python $module"
+                        bat "python $module"
                     }
                 }
             }
@@ -45,7 +46,7 @@ pipeline {
 		stage('Ejecutar Pruebas SQL') {
             steps {
                 script {
-                    sh 'psql -U tu-usuario -d tu-base-de-datos -a -f tests.sql'
+                    bat 'psql -U tu-usuario -d tu-base-de-datos -a -f tests.sql'
                 }
             }
         }
