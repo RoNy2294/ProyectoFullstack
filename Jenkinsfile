@@ -1,14 +1,7 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Clonar Repositorio') {
-            steps {
-                git branch: 'main', credentialsId: 'tus-credenciales-github', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
-            }
-        }
-
-       // Etapas para pruebas y despliegue ...
+    // Etapas para pruebas y despliegue ...
 
         stage('Pruebas de Módulos') {
             steps {
@@ -24,7 +17,7 @@ pipeline {
                 }
             }
         }
-		stage('Pruebas de Controllers') {
+	stage('Pruebas de Controllers') {
             steps {
                 dir('BACKEND/controller') {
                     script {
@@ -39,7 +32,7 @@ pipeline {
                 }
             }
         }
-		stage('Ejecutar Pruebas SQL') {
+	stage('Ejecutar Pruebas SQL') {
             steps {
                 dir('https://github.com/RoNy2294/ProyectoFullstack.git') {
                     script {
