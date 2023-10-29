@@ -5,7 +5,7 @@ pipeline {
 
         stage('Pruebas de Módulos') {
             steps {
-                dir('BACKEND/modulos') {
+                dir('backend/model') {
                     script {
                         def modules = ['categoria.py', 'foro.py', 'noticia.py', 'orden.py', 'producto.py', 'rol.py', 'usuario.py']
 
