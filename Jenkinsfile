@@ -1,6 +1,21 @@
 pipeline {
     agent any
 
+    stages {
+        stage('Clonar Repositorio') {
+            steps {
+                git branch: 'main', url: 'https://github.com/RoNy2294/ProyectoFullstack.git'
+            }
+        }
+
+        stage('Construir Frontend') {
+            steps {
+                dir('view') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
     // Etapas para pruebas y despliegue ...
 
         stage('Pruebas de Módulos') {
