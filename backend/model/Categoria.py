@@ -8,5 +8,5 @@ class Categoria:
         return self.idCategoria
     def setId(self, idCategoria):
         self.idCategoria = idCategoria
-
+//caregorias
 
